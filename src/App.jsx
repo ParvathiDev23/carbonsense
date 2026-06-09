@@ -5,13 +5,13 @@ import { Leaf } from 'lucide-react';
 
 function App() {
   const [userData, setUserData] = useState(() => {
-    const saved = localStorage.getItem('ecotrack_data');
+    const saved = localStorage.getItem('carbonsense_data');
     return saved ? JSON.parse(saved) : null;
   });
 
   useEffect(() => {
     if (userData) {
-      localStorage.setItem('ecotrack_data', JSON.stringify(userData));
+      localStorage.setItem('carbonsense_data', JSON.stringify(userData));
     }
   }, [userData]);
 
@@ -41,7 +41,7 @@ function App() {
 
   const resetData = () => {
     if (confirm('Are you sure you want to reset your profile and start over?')) {
-      localStorage.removeItem('ecotrack_data');
+      localStorage.removeItem('carbonsense_data');
       setUserData(null);
     }
   };
@@ -53,7 +53,7 @@ function App() {
           <div style={{ background: 'var(--accent-primary)', padding: '0.5rem', borderRadius: 'var(--radius-sm)', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Leaf size={24} />
           </div>
-          <h1 style={{ fontSize: '1.5rem', margin: 0, fontWeight: 800, letterSpacing: '-0.05em' }}>Eco<span style={{ color: 'var(--accent-primary)' }}>Track</span></h1>
+          <h1 style={{ fontSize: '1.5rem', margin: 0, fontWeight: 800, letterSpacing: '-0.05em' }}>Carbon<span style={{ color: 'var(--accent-primary)' }}>Sense</span></h1>
         </div>
         {userData && (
           <button className="btn-secondary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }} onClick={resetData}>
