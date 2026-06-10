@@ -228,4 +228,10 @@ const ActionCarousel = ({ onLogAction }) => {
   );
 };
 
+import PropTypes from 'prop-types';
+
+ActionCarousel.propTypes = {
+  onLogAction: PropTypes.func,
+};
+
 export default ActionCarousel;

@@ -258,4 +258,10 @@ const Hero = ({ onStart }) => {
   );
 };
 
+import PropTypes from 'prop-types';
+
+Hero.propTypes = {
+  onStart: PropTypes.func.isRequired,
+};
+
 export default Hero;

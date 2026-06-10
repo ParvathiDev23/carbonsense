@@ -510,4 +510,10 @@ const Calculator = ({ onComplete }) => {
   );
 };
 
+import PropTypes from 'prop-types';
+
+Calculator.propTypes = {
+  onComplete: PropTypes.func.isRequired,
+};
+
 export default Calculator;

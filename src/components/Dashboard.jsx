@@ -470,4 +470,19 @@ const Dashboard = ({ userData, onLogAction }) => {
   );
 };
 
+import PropTypes from 'prop-types';
+
+Dashboard.propTypes = {
+  userData: PropTypes.shape({
+    current: PropTypes.number,
+    baseline: PropTypes.number,
+    breakdown: PropTypes.object,
+    streak: PropTypes.number,
+    totalReduced: PropTypes.number,
+    history: PropTypes.array,
+    actionsTaken: PropTypes.number
+  }).isRequired,
+  onLogAction: PropTypes.func.isRequired,
+};
+
 export default Dashboard;
