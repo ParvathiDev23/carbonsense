@@ -1,82 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import {
-  Utensils,
-  Car,
-  Home,
-  ShoppingBag,
-  Plane,
-  ChevronLeft,
-  ChevronRight,
-  Check,
-  TrendingDown,
-  BarChart3,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, Check } from 'lucide-react';
+import { steps } from '../data/calculatorSteps';
 
-const steps = [
-  {
-    key: 'diet',
-    label: 'Diet',
-    icon: Utensils,
-    question: 'How would you describe your diet?',
-    options: [
-      { title: 'Meat-Heavy', desc: 'Meat in most meals, daily', value: 3.3 },
-      { title: 'Meat-Moderate', desc: 'Meat a few times per week', value: 2.5 },
-      { title: 'Pescatarian', desc: 'Fish but no other meat', value: 2.0 },
-      { title: 'Vegetarian', desc: 'No meat or fish', value: 1.7 },
-      { title: 'Vegan', desc: 'No animal products', value: 1.5 },
-    ],
-  },
-  {
-    key: 'transport',
-    label: 'Transport',
-    icon: Car,
-    question: 'What is your primary mode of transport?',
-    options: [
-      { title: 'Solo Car (Gas)', desc: 'Drive alone, gasoline vehicle', value: 4.6 },
-      { title: 'Solo Car (Electric)', desc: 'Drive alone, electric vehicle', value: 2.0 },
-      { title: 'Carpool', desc: 'Share rides regularly', value: 1.5 },
-      { title: 'Public Transit', desc: 'Bus, metro, or train', value: 1.0 },
-      { title: 'Bike / Walk', desc: 'Active transport only', value: 0.0 },
-    ],
-  },
-  {
-    key: 'energy',
-    label: 'Home Energy',
-    icon: Home,
-    question: 'What best describes your home energy usage?',
-    options: [
-      { title: 'Large Home, Fossil', desc: 'Large home on gas/oil heating', value: 5.0 },
-      { title: 'Medium Home, Standard', desc: 'Average home, grid electricity', value: 3.0 },
-      { title: 'Small Home, Efficient', desc: 'Compact space, efficient appliances', value: 1.8 },
-      { title: 'Renewable Mix', desc: 'Partial solar or green energy plan', value: 0.8 },
-      { title: 'Full Renewable', desc: '100% renewable energy sources', value: 0.0 },
-    ],
-  },
-  {
-    key: 'shopping',
-    label: 'Shopping',
-    icon: ShoppingBag,
-    question: 'How would you describe your consumption habits?',
-    options: [
-      { title: 'Heavy Consumer', desc: 'Frequent new purchases, fast fashion', value: 2.5 },
-      { title: 'Average', desc: 'Typical buying patterns', value: 1.5 },
-      { title: 'Conscious Buyer', desc: 'Prefer durable and ethical goods', value: 0.8 },
-      { title: 'Minimalist', desc: 'Buy only what is necessary', value: 0.3 },
-    ],
-  },
-  {
-    key: 'travel',
-    label: 'Flights',
-    icon: Plane,
-    question: 'How often do you fly?',
-    options: [
-      { title: 'Frequent Flyer', desc: 'Monthly or more', value: 4.0 },
-      { title: 'Several Flights/Year', desc: '3 to 6 flights annually', value: 2.0 },
-      { title: 'Rare Flights', desc: '1 to 2 flights per year', value: 0.8 },
-      { title: 'No Flights', desc: 'Do not fly', value: 0.0 },
-    ],
-  },
-];
 
 function ProgressRing({ step, total }) {
   const size = 72;
@@ -510,10 +435,9 @@ const Calculator = ({ onComplete }) => {
   );
 };
 
-import PropTypes from 'prop-types';
+
 
 Calculator.propTypes = {
-  onComplete: PropTypes.func.isRequired,
 };
 
 export default Calculator;

@@ -19,7 +19,7 @@ function App() {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [setUserData]);
 
   // Scroll reveal observer
   useEffect(() => {
@@ -44,7 +44,7 @@ function App() {
     setTimeout(() => {
       calculatorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 100);
-  }, []);
+  }, [setUserData]);
 
   const handleCompleteOnboarding = useCallback((data) => {
     setUserData({
@@ -57,7 +57,7 @@ function App() {
     });
     setShowCalculator(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+  }, [setUserData]);
 
   const handleLogAction = useCallback((action) => {
     setUserData((prev) => {
@@ -79,7 +79,7 @@ function App() {
         ],
       };
     });
-  }, []);
+  }, [setUserData]);
 
   const resetData = useCallback(() => {
     if (confirm('Are you sure you want to reset all your data and start fresh?')) {
@@ -87,7 +87,7 @@ function App() {
       setUserData(null);
       setShowCalculator(false);
     }
-  }, []);
+  }, [setUserData]);
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh' }}>

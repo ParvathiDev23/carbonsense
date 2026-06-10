@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">39.28% </span>
+                <span class="strong">37.03% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/28</span>
+                <span class='fraction'>10/27</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">44% </span>
+                <span class="strong">41.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/25</span>
+                <span class='fraction'>10/24</span>
             </div>
         
             
@@ -281,44 +281,7 @@
 <a name='L216'></a><a href='#L216'>216</a>
 <a name='L217'></a><a href='#L217'>217</a>
 <a name='L218'></a><a href='#L218'>218</a>
-<a name='L219'></a><a href='#L219'>219</a>
-<a name='L220'></a><a href='#L220'>220</a>
-<a name='L221'></a><a href='#L221'>221</a>
-<a name='L222'></a><a href='#L222'>222</a>
-<a name='L223'></a><a href='#L223'>223</a>
-<a name='L224'></a><a href='#L224'>224</a>
-<a name='L225'></a><a href='#L225'>225</a>
-<a name='L226'></a><a href='#L226'>226</a>
-<a name='L227'></a><a href='#L227'>227</a>
-<a name='L228'></a><a href='#L228'>228</a>
-<a name='L229'></a><a href='#L229'>229</a>
-<a name='L230'></a><a href='#L230'>230</a>
-<a name='L231'></a><a href='#L231'>231</a>
-<a name='L232'></a><a href='#L232'>232</a>
-<a name='L233'></a><a href='#L233'>233</a>
-<a name='L234'></a><a href='#L234'>234</a>
-<a name='L235'></a><a href='#L235'>235</a>
-<a name='L236'></a><a href='#L236'>236</a>
-<a name='L237'></a><a href='#L237'>237</a>
-<a name='L238'></a><a href='#L238'>238</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L219'></a><a href='#L219'>219</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -536,37 +499,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useRef, useState, useCallback } from 'react';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Utensils,
-  Bike,
-  Bus,
-  Shirt,
-  Lightbulb,
-  Plug,
-  ShoppingBag,
-  Recycle,
-  Leaf,
-  Users,
-  Check,
-} from 'lucide-react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useRef, useState, useCallback } from 'react';
+import { ChevronLeft, ChevronRight, Check } from 'lucide-react';
+import { actions } from '../data/ecoActions';
 &nbsp;
-const actions = [
-  { title: 'Plant-Based Meal', description: 'Replace one meat meal with a plant-based alternative today.', impact: -0.1, category: 'Diet', icon: Utensils, color: '#4ade80' },
-  { title: 'Bike Commute', description: 'Cycle to work or errands instead of driving.', impact: -0.2, category: 'Transport', icon: Bike, color: '#38bdf8' },
-  { title: 'Public Transit', description: 'Take the bus or train for your commute today.', impact: -0.1, category: 'Transport', icon: Bus, color: '#38bdf8' },
-  { title: 'Line Dry Clothes', description: 'Skip the dryer and air-dry your laundry.', impact: -0.05, category: 'Energy', icon: Shirt, color: '#fbbf24' },
-  { title: 'LED Lighting', description: 'Switch remaining bulbs to energy-efficient LEDs.', impact: -0.03, category: 'Energy', icon: Lightbulb, color: '#fbbf24' },
-  { title: 'Unplug Devices', description: 'Disconnect chargers and standby electronics when not in use.', impact: -0.02, category: 'Energy', icon: Plug, color: '#fbbf24' },
-  { title: 'Buy Second-Hand', description: 'Choose pre-owned items instead of buying new.', impact: -0.15, category: 'Shopping', icon: ShoppingBag, color: '#a78bfa' },
-  { title: 'Bring Reusable Bag', description: 'Carry your own bag to avoid single-use plastic.', impact: -0.01, category: 'Shopping', icon: Recycle, color: '#a78bfa' },
-  { title: 'Meatless Monday', description: 'Go fully meatless for the entire day.', impact: -0.12, category: 'Diet', icon: Leaf, color: '#4ade80' },
-  { title: 'Carpool', description: 'Share your ride with a colleague or neighbor.', impact: -0.08, category: 'Transport', icon: Users, color: '#38bdf8' },
-];
 &nbsp;
+/**
+ * ActionCarousel Component
+ * Renders a horizontally scrollable list of daily eco-friendly actions that users can log.
+ * 
+ * @param {Object} props
+ * @param {Function} props.onLogAction - Callback fired when an action is logged
+ */
 const ActionCarousel = ({ onLogAction }) =&gt; {
   const scrollRef = useRef(null);
   const [logged, setLogged] = useState({});
@@ -767,10 +711,9 @@ const ActionCarousel = ({ onLogAction }) =&gt; {
   );
 };
 &nbsp;
-import PropTypes from 'prop-types';
+&nbsp;
 &nbsp;
 ActionCarousel.propTypes = {
-  onLogAction: PropTypes.func,
 };
 &nbsp;
 export default ActionCarousel;
@@ -781,7 +724,7 @@ export default ActionCarousel;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-10T09:30:02.934Z
+                at 2026-06-10T09:43:16.182Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

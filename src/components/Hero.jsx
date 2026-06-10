@@ -1,6 +1,14 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
+
 import { ChevronDown } from 'lucide-react';
 
+/**
+ * Hero Component
+ * Displays the landing section with background video, animated headline, and call-to-action.
+ * 
+ * @param {Object} props
+ * @param {Function} props.onStart - Callback fired when the CTA button is clicked
+ */
 const Hero = ({ onStart }) => {
   const canvasRef = useRef(null);
   const animFrameRef = useRef(null);
@@ -258,10 +266,9 @@ const Hero = ({ onStart }) => {
   );
 };
 
-import PropTypes from 'prop-types';
+
 
 Hero.propTypes = {
-  onStart: PropTypes.func.isRequired,
 };
 
 export default Hero;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { TreePine, Waves, Zap } from 'lucide-react';
 
 const featureData = [

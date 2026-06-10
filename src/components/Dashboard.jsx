@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   TrendingDown,
   Activity,
@@ -13,6 +13,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+
 import ActionCarousel from './ActionCarousel';
 
 const PIE_COLORS = ['#4ade80', '#38bdf8', '#fbbf24', '#a78bfa', '#f87171'];
@@ -470,19 +471,9 @@ const Dashboard = ({ userData, onLogAction }) => {
   );
 };
 
-import PropTypes from 'prop-types';
+
 
 Dashboard.propTypes = {
-  userData: PropTypes.shape({
-    current: PropTypes.number,
-    baseline: PropTypes.number,
-    breakdown: PropTypes.object,
-    streak: PropTypes.number,
-    totalReduced: PropTypes.number,
-    history: PropTypes.array,
-    actionsTaken: PropTypes.number
-  }).isRequired,
-  onLogAction: PropTypes.func.isRequired,
 };
 
 export default Dashboard;
