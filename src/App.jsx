@@ -8,8 +8,28 @@ import { Leaf, X } from 'lucide-react';
 
 function App() {
   const [userData, setUserData] = useState(() => {
-    const saved = localStorage.getItem('carbonsense_data');
-    return saved ? JSON.parse(saved) : null;
+    try {
+      const saved = localStorage.getItem('carbonsense_data');
+      if (!saved) return null;
+      const parsed = JSON.parse(saved);
+      // Validate and migrate old data format
+      if (parsed && typeof parsed === 'object' && typeof parsed.baseline === 'number') {
+        return {
+          baseline: Number(parsed.baseline) || 0,
+          current: Number(parsed.current) || 0,
+          breakdown: parsed.breakdown || {},
+          history: Array.isArray(parsed.history) ? parsed.history : [],
+          actionsTaken: Array.isArray(parsed.actionsTaken) ? parsed.actionsTaken : [],
+          streak: Number(parsed.streak) || 0,
+        };
+      }
+      // Data is in an unrecognized format, clear it
+      localStorage.removeItem('carbonsense_data');
+      return null;
+    } catch {
+      localStorage.removeItem('carbonsense_data');
+      return null;
+    }
   });
   const [showCalculator, setShowCalculator] = useState(false);
   const [navScrolled, setNavScrolled] = useState(false);

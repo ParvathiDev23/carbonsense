@@ -45,6 +45,7 @@ function useInView(ref) {
 }
 
 function AnimatedNumber({ value, decimals = 1, inView, suffix = '' }) {
+  const numVal = Number(value) || 0;
   const [current, setCurrent] = useState(0);
   useEffect(() => {
     if (!inView) return;
@@ -52,21 +53,21 @@ function AnimatedNumber({ value, decimals = 1, inView, suffix = '' }) {
     const duration = 1800;
     const stepTime = 16;
     const numSteps = duration / stepTime;
-    const inc = value / numSteps;
+    const inc = numVal / numSteps;
     const timer = setInterval(() => {
       start += inc;
-      if (start >= value) {
-        setCurrent(value);
+      if (start >= numVal) {
+        setCurrent(numVal);
         clearInterval(timer);
       } else {
         setCurrent(start);
       }
     }, stepTime);
     return () => clearInterval(timer);
-  }, [inView, value]);
+  }, [inView, numVal]);
   return (
     <span>
-      {current.toFixed(decimals)}
+      {Number(current).toFixed(decimals)}
       {suffix}
     </span>
   );
@@ -89,7 +90,7 @@ function CustomTooltip({ active, payload }) {
         {d.name}
       </p>
       <p style={{ color: '#94a3b8', margin: 0 }}>
-        {d.value.toFixed(1)}t CO2/year
+        {Number(d.value).toFixed(1)}t CO2/year
       </p>
     </div>
   );
@@ -111,13 +112,15 @@ const Dashboard = ({ userData, onLogAction }) => {
     current = 0,
     breakdown = {},
     history = [],
-    actionsTaken = 0,
+    actionsTaken = [],
+    streak: userStreak = 0,
   } = userData || {};
 
+  const actionsCount = Array.isArray(actionsTaken) ? actionsTaken.length : Number(actionsTaken) || 0;
   const globalAvg = 4.5;
-  const diff = current - globalAvg;
-  const totalReduced = Math.max(0, baseline - current);
-  const streak = Math.min(actionsTaken, 30);
+  const diff = Number(current) - globalAvg;
+  const totalReduced = Math.max(0, Number(baseline) - Number(current));
+  const streak = Number(userStreak) || 0;
 
   const pieData = Object.entries(breakdown)
     .filter(([, v]) => v > 0)
@@ -137,7 +140,7 @@ const Dashboard = ({ userData, onLogAction }) => {
     },
     {
       label: 'Actions Logged',
-      value: actionsTaken,
+      value: actionsCount,
       decimals: 0,
       suffix: '',
       icon: Activity,
@@ -224,8 +227,8 @@ const Dashboard = ({ userData, onLogAction }) => {
           }}
         >
           {diff > 0
-            ? `${Math.abs(diff).toFixed(1)} tons above global average`
-            : `${Math.abs(diff).toFixed(1)} tons below global average`}
+            ? `${Math.abs(Number(diff)).toFixed(1)} tons above global average`
+            : `${Math.abs(Number(diff)).toFixed(1)} tons below global average`}
         </p>
       </div>
 
@@ -420,11 +423,11 @@ const Dashboard = ({ userData, onLogAction }) => {
               <Clock size={16} color="#94a3b8" />
               Recent Activity
             </h3>
-            {history.length > 0 ? (
+            {Array.isArray(actionsTaken) && actionsTaken.length > 0 ? (
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                {history.slice(-5).reverse().map((item, i) => (
+                {actionsTaken.slice(0, 5).map((item, i) => (
                   <li
-                    key={i}
+                    key={item.id || i}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -438,15 +441,15 @@ const Dashboard = ({ userData, onLogAction }) => {
                     <Leaf size={16} color="#4ade80" />
                     <div style={{ flex: 1 }}>
                       <span style={{ color: '#f1f5f9', fontSize: '0.9rem', fontWeight: 600 }}>
-                        {item.title || item.action}
+                        {item.title || item.action || 'Action'}
                       </span>
                     </div>
                     <span style={{ color: '#4ade80', fontSize: '0.85rem', fontWeight: 700, whiteSpace: 'nowrap' }}>
-                      {item.impact}t
+                      -{Number(item.impact || 0).toFixed(2)}t
                     </span>
-                    {item.timestamp && (
+                    {item.loggedAt && (
                       <span style={{ color: '#64748b', fontSize: '0.75rem', whiteSpace: 'nowrap' }}>
-                        {item.timestamp}
+                        {new Date(item.loggedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </span>
                     )}
                   </li>
