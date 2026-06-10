@@ -181,6 +181,7 @@ function App() {
               <div ref={calculatorRef} id="calculator-section">
                 <section className="section" style={{ position: 'relative' }}>
                   <button
+                    aria-label="Close Calculator"
                     onClick={() => setShowCalculator(false)}
                     style={{
                       position: 'absolute',

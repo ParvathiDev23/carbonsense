@@ -52,6 +52,28 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
 4. **Open your browser**
    Navigate to `http://localhost:5173` to view the application.
 
+## 🎯 Challenge Requirements
+
+### Chosen Vertical
+**Carbon Footprint Awareness Platform**
+We chose this vertical to design a solution that helps individuals understand, track, and reduce their carbon footprint through simple actions and personalized insights.
+
+### Approach and Logic
+- **Gamification & Engagement:** Instead of a dry form, the platform uses a dynamic, premium UI to keep users engaged. The calculator uses a progressive 5-step flow with immediate visual feedback.
+- **Action-Oriented Tracking:** The core logic shifts from just *calculating* a number to *actively reducing* it. Users are presented with a daily carousel of eco-actions, each carrying a specific CO2 reduction impact.
+- **Streak System:** To build sustainable habits, the platform tracks consecutive days of logged actions (streaks), encouraging daily return visits.
+- **Local Persistence:** To ensure privacy and speed, user data (baseline, current footprint, history, and streaks) is stored locally in the browser (`localStorage`), removing the friction of account creation while maintaining a personalized experience.
+
+### How the Solution Works
+1. **Onboarding / Calculator:** A new user takes a 5-step assessment (Diet, Transport, Home Energy, Shopping, Flights). Each selection has an assigned CO2 tonnage value.
+2. **Dashboard:** The user is presented with their total estimated annual footprint, compared against the global average (4.5 tons). A pie chart breaks down their emissions by category.
+3. **Action Logging:** Users scroll through a list of daily eco-actions (e.g., "Bike Commute", "Meatless Meal"). Logging an action subtracts its CO2 impact from their current footprint and updates their progress chart and streak counter in real time.
+
+### Assumptions Made
+- The global average carbon footprint is assumed to be 4.5 tons of CO2 per year for comparison purposes.
+- CO2 impact values in the calculator and daily actions are estimates designed for relative comparison rather than precise scientific measurement.
+- Users are interacting on a single personal device (data is stored in `localStorage` and is not synced across multiple devices).
+
 ## 🏗️ Project Structure
 
 - `/src/components/`: Modular React components (Hero, Features, Calculator, Dashboard, ActionCarousel, Footer).
@@ -59,9 +81,9 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
 - `/public/images/`: Custom generated atmospheric background images.
 - `/public/videos/`: High-quality looping video backgrounds.
 
-## 🎨 Design Philosophy
-
-CarbonSense breaks away from the traditional, simple aesthetic of many environmental tools. It uses a dark mode, premium design language to make tracking your carbon footprint feel modern, engaging, and rewarding. The platform avoids generic styling in favor of custom color palettes, smooth micro-interactions, and a sense of depth.
+## ♿ Accessibility & Quality
+- **Accessibility**: ARIA labels on interactive elements, high contrast text, and semantic HTML structure.
+- **Performance**: Optimized asset loading and CSS-based animations.
 
 ## 📝 License
 

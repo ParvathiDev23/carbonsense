@@ -79,6 +79,7 @@ const ActionCarousel = ({ onLogAction }) => {
           </div>
           <div style={{ display: 'flex', gap: '10px' }}>
             <button
+              aria-label="Scroll left"
               className="carousel-arrow"
               onClick={() => scroll(-1)}
               style={{
@@ -98,6 +99,7 @@ const ActionCarousel = ({ onLogAction }) => {
               <ChevronLeft size={20} />
             </button>
             <button
+              aria-label="Scroll right"
               className="carousel-arrow"
               onClick={() => scroll(1)}
               style={{
