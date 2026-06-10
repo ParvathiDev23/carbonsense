@@ -209,9 +209,28 @@ const Hero = ({ onStart }) => {
       <canvas ref={canvasRef} style={styles.canvas} />
 
       <div style={styles.content}>
-        <h1 style={styles.headline} className="text-gradient">
+        <p style={{
+          fontSize: '0.85rem',
+          textTransform: 'uppercase',
+          letterSpacing: '0.2em',
+          color: '#4ade80',
+          fontWeight: 600,
+          marginBottom: '20px',
+          opacity: wordsVisible > 0 ? 1 : 0,
+          transition: 'opacity 0.5s ease',
+        }}>
+          Carbon Footprint Awareness Platform
+        </p>
+        <h1 style={{
+          ...styles.headline,
+          color: '#f1f5f9',
+        }}>
           {words.map((w, i) => (
-            <span key={i} style={styles.word(i < wordsVisible)}>
+            <span key={i} style={{
+              ...styles.word(i < wordsVisible),
+              color: (w === 'Impact' || w === 'Planet') ? '#4ade80' : '#f1f5f9',
+              textShadow: (w === 'Impact' || w === 'Planet') ? '0 0 30px rgba(74,222,128,0.4)' : 'none',
+            }}>
               {w}
             </span>
           ))}
