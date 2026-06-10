@@ -1,16 +1,68 @@
-# React + Vite
+# CarbonSense 🌍
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![CarbonSense Hero](public/images/hero-earth.png)
 
-Currently, two official plugins are available:
+**CarbonSense** is a premium, modern Carbon Footprint Awareness Platform designed to help individuals understand, track, and reduce their environmental impact through personalized insights and actionable daily challenges.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[**Live Demo**](https://project2-jade-three.vercel.app)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+- **Immersive Interface**: High-end glassmorphic UI with dynamic scroll reveals, 3D tilt effects, and floating particle animations.
+- **Comprehensive Calculator**: A 5-step intuitive assessment covering Diet, Transport, Home Energy, Shopping, and Flights to accurately estimate your annual CO2 emissions.
+- **Personalized Dashboard**: Visualizes your carbon footprint breakdown using custom-styled charts and compares it against global averages.
+- **Daily Action Logging**: A swipeable carousel of eco-friendly actions you can take daily to reduce your footprint, complete with impact values and streak tracking.
+- **Real-time Analytics**: See your total CO2 reduced, actions logged, and current streak update instantly as you interact with the platform.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Technology Stack
+
+- **Framework**: React + Vite
+- **Styling**: Pure CSS with a custom design system (glassmorphism, advanced keyframe animations, CSS variables, noise overlays)
+- **Icons**: Lucide React
+- **Data Visualization**: Recharts
+- **Hosting/Deployment**: Vercel
+
+## 🚀 Getting Started
+
+To run CarbonSense locally on your machine, follow these steps:
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed.
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ParvathiDev23/carbonsense.git
+   cd carbonsense
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:5173` to view the application.
+
+## 🏗️ Project Structure
+
+- `/src/components/`: Modular React components (Hero, Features, Calculator, Dashboard, ActionCarousel, Footer).
+- `/src/index.css`: The core design system containing variables, global styles, and all animation keyframes.
+- `/public/images/`: Custom generated atmospheric background images.
+- `/public/videos/`: High-quality looping video backgrounds.
+
+## 🎨 Design Philosophy
+
+CarbonSense breaks away from the traditional, simple aesthetic of many environmental tools. It uses a dark mode, premium design language to make tracking your carbon footprint feel modern, engaging, and rewarding. The platform avoids generic styling in favor of custom color palettes, smooth micro-interactions, and a sense of depth.
+
+## 📝 License
+
+This project is licensed under the MIT License.
