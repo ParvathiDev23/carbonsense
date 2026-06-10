@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import useLocalStorage from './hooks/useLocalStorage';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Calculator from './components/Calculator';
@@ -7,39 +8,10 @@ import Footer from './components/Footer';
 import { Leaf, X } from 'lucide-react';
 
 function App() {
-  const [userData, setUserData] = useState(() => {
-    try {
-      const saved = localStorage.getItem('carbonsense_data');
-      if (!saved) return null;
-      const parsed = JSON.parse(saved);
-      // Validate and migrate old data format
-      if (parsed && typeof parsed === 'object' && typeof parsed.baseline === 'number') {
-        return {
-          baseline: Number(parsed.baseline) || 0,
-          current: Number(parsed.current) || 0,
-          breakdown: parsed.breakdown || {},
-          history: Array.isArray(parsed.history) ? parsed.history : [],
-          actionsTaken: Array.isArray(parsed.actionsTaken) ? parsed.actionsTaken : [],
-          streak: Number(parsed.streak) || 0,
-        };
-      }
-      // Data is in an unrecognized format, clear it
-      localStorage.removeItem('carbonsense_data');
-      return null;
-    } catch {
-      localStorage.removeItem('carbonsense_data');
-      return null;
-    }
-  });
+  const [userData, setUserData] = useLocalStorage('carbonsense_data', null);
   const [showCalculator, setShowCalculator] = useState(false);
   const [navScrolled, setNavScrolled] = useState(false);
   const calculatorRef = useRef(null);
-
-  useEffect(() => {
-    if (userData) {
-      localStorage.setItem('carbonsense_data', JSON.stringify(userData));
-    }
-  }, [userData]);
 
   useEffect(() => {
     const handleScroll = () => {
